@@ -576,7 +576,7 @@ lifecycle:
   deprecation_date: null
   sunset_date: null
 
-``` 
+```  
 yaml
 
 
@@ -1307,6 +1307,7 @@ Following SOA security best practices, implement defense in depth:
 
 ---
 
+
 ## PART 9: IMPLEMENTATION ROADMAP
 
 ### 9.1 Phased Implementation
@@ -1327,46 +1328,46 @@ Following **SOA adoption best practices**, implement incrementally:
 
 | Task                        | Description                               | Owner           | Deliverable                       |
 |-----------------------------|-------------------------------------------|-----------------|-----------------------------------|
-| Deploy llm-gateway-svc      | LLM routing, caching, fallback            | Platform Team   | Production LLM service           |
-| Deploy embedding-svc        | Embedding generation, caching             | Platform Team   | Production embedding service     |
-| Deploy notification-svc     | Multi-channel notifications               | Platform Team   | Production notification service  |
-| Deploy audit-svc            | Compliance logging                        | Platform Team   | Production audit service         |
-| Deploy metrics-svc          | Prometheus metrics                        | Platform Team   | Production metrics service       |
+| Deploy llm-gateway-svc      | LLM routing, caching, fallback            | T2              | Production LLM service           |
+| Deploy embedding-svc        | Embedding generation, caching             | T2              | Production embedding service     |
+| Deploy notification-svc     | Multi-channel notifications               | T2              | Production notification service  |
+| Deploy audit-svc            | Compliance logging                        | T2              | Production audit service         |
+| Deploy metrics-svc          | Prometheus metrics                        | T2              | Production metrics service       |
 
 #### Phase 3: InfraAI Services (Weeks 9-14)
 
-| Task                            | Description                              | Owner                    | Deliverable                          |
-|---------------------------------|------------------------------------------|--------------------------|--------------------------------------|
-| Deploy hardware-diagnostics-svc | Migrate XRDU tool                        | Prafull Thokal          | Production diagnostic service       |
-| Deploy k8s-diagnostics-svc      | Migrate Sambastack Inspector             | Prafull/Raj/Divyesh     | Production K8s service              |
-| Deploy correlation-svc          | Pattern matching, root cause             | Prafull                 | Production correlation service      |
-| Deploy remediation-svc          | Code generation, auto-fix                | Rohit Vyawahare         | Production remediation service      |
-| Deploy nlp-command-svc          | NL to kubectl                            | Prajwal Balapure        | Production NLP service              |
-| Implement InfraAI workflows     | Temporal orchestration                   | Platform Team           | Working orchestration               |
+| Task                            | Description                              | Owner   | Deliverable                          |
+|---------------------------------|------------------------------------------|---------|--------------------------------------|
+| Deploy hardware-diagnostics-svc | Migrate XRDU tool                        | T1      | Production diagnostic service       |
+| Deploy k8s-diagnostics-svc      | Migrate Sambastack Inspector             | T1      | Production K8s service              |
+| Deploy correlation-svc          | Pattern matching, root cause             | T1      | Production correlation service      |
+| Deploy remediation-svc          | Code generation, auto-fix                | T1      | Production remediation service      |
+| Deploy nlp-command-svc          | NL to kubectl                            | T1      | Production NLP service              |
+| Implement InfraAI workflows     | Temporal orchestration                   | T2      | Working orchestration               |
 
 #### Phase 4: KnowledgeAI Services (Weeks 15-22)
 
-| Task                               | Description                            | Owner                  | Deliverable                          |
-|------------------------------------|----------------------------------------|------------------------|--------------------------------------|
-| Deploy retrieval-svc               | Hybrid search engine                   | Hitesh Jha            | Production retrieval service        |
-| Deploy ingestion-svc               | Document processing pipeline           | Hitesh Jha            | Production ingestion service        |
-| Deploy summarization-svc           | Thread/doc summarization               | Tanish/Neha           | Production summarization service    |
-| Deploy query-classification-svc    | Intent detection                       | Hitesh Jha            | Production classification service   |
-| Deploy resolution-synthesis-svc    | Answer generation                      | Hitesh Jha            | Production synthesis service        |
-| Deploy ticket-automation-svc       | Jira/SF automation                     | Neha Marathe          | Production ticket service           |
-| Deploy reporting-svc               | Analytics, sync                        | Tanish/Saurabh        | Production reporting service        |
-| Deploy proactive-monitoring-svc    | Webhook monitoring                     | Hitesh Jha            | Production monitoring service       |
-| Deploy channel adapters            | Slack, Confluence, Jira, SF            | Various               | Production adapters                 |
+| Task                               | Description                            | Owner   | Deliverable                          |
+|------------------------------------|----------------------------------------|---------|--------------------------------------|
+| Deploy retrieval-svc               | Hybrid search engine                   | T2      | Production retrieval service        |
+| Deploy ingestion-svc               | Document processing pipeline           | T2      | Production ingestion service        |
+| Deploy summarization-svc           | Thread/doc summarization               | T2      | Production summarization service    |
+| Deploy query-classification-svc    | Intent detection                       | T2      | Production classification service   |
+| Deploy resolution-synthesis-svc    | Answer generation                      | T2      | Production synthesis service        |
+| Deploy ticket-automation-svc       | Jira/SF automation                     | T2      | Production ticket service           |
+| Deploy reporting-svc               | Analytics, sync                        | T2      | Production reporting service        |
+| Deploy proactive-monitoring-svc    | Webhook monitoring                     | T2      | Production monitoring service       |
+| Deploy channel adapters            | Slack, Confluence, Jira, SF            | T2      | Production adapters                 |
 
 #### Phase 5: Integration & Optimization (Weeks 23-26)
 
-| Task                          | Description                        | Owner         | Deliverable                          |
-|-------------------------------|------------------------------------|---------------|--------------------------------------|
-| Cross-platform integration    | InfraAI ↔ KnowledgeAI flows        | All Teams     | Working cross-platform workflows    |
-| Performance tuning            | SLA optimization                   | Platform Team | Meeting SLA targets                 |
-| Governance enforcement        | Automated compliance               | Platform Team | Governance automation               |
-| Documentation                 | Service docs, runbooks             | All Teams     | Complete documentation              |
-| Migration completion          | Legacy tool sunset                 | All Teams     | Full migration                      |
+| Task                          | Description                        | Owner      | Deliverable                          |
+|-------------------------------|------------------------------------|------------|--------------------------------------|
+| Cross-platform integration    | InfraAI ↔ KnowledgeAI flows        | T1 + T2    | Working cross-platform workflows    |
+| Performance tuning            | SLA optimization                   | T2         | Meeting SLA targets                 |
+| Governance enforcement        | Automated compliance               | T2         | Governance automation               |
+| Documentation                 | Service docs, runbooks             | T1 + T2    | Complete documentation              |
+| Migration completion          | Legacy tool sunset                 | T1 + T2    | Full migration                      |
 
 ---
 
