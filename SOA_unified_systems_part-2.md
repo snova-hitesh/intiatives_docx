@@ -150,7 +150,7 @@ The **Enterprise Service Bus (ESB)** provides the integration backbone for all s
 
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
 │                         ENTERPRISE SERVICE BUS (ESB)                                │
-│                    (Apache Kafka + Redis Streams + Kong Gateway)                    │
+│                    ( NATS JetStream + Redis Streams + Kong Gateway)                    │
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
 │  ┌───────────────────────────────────────────────────────────────────────────────┐  │
@@ -161,7 +161,7 @@ The **Enterprise Service Bus (ESB)** provides the integration backbone for all s
 │  │  │                 │  │   ADAPTER       │  │   TRANSFORMER   │               │  │
 │  │  │                 │  │                 │  │                 │               │  │
 │  │  │ • Pub/Sub       │  │ • REST ↔ gRPC   │  │ • JSON ↔ Proto  │               │  │
-│  │  │ • Point-to-Point│  │ • HTTP ↔ Kafka  │  │ • Schema mapping│               │  │
+│  │  │ • Point-to-Point│  │ • HTTP ↔ NATS JetStream  │  │ • Schema mapping│               │  │
 │  │  │ • Request/Reply │  │ • WS ↔ Streams  │  │ • Enrichment    │               │  │
 │  │  │ • Broadcast     │  │ • AMQP ↔ Redis  │  │ • Validation    │               │  │
 │  │  └─────────────────┘  └─────────────────┘  └─────────────────┘               │  │
@@ -178,7 +178,7 @@ The **Enterprise Service Bus (ESB)** provides the integration backbone for all s
 │  └───────────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                     │
 │  ┌───────────────────────────────────────────────────────────────────────────────┐  │
-│  │                    KAFKA TOPICS (Event Channels)                              │  │
+│  │                    NATS JetStream TOPICS (Event Channels)                              │  │
 │  │                                                                               │  │
 │  │  ┌─────────────────────────────────────────────────────────────────────────┐  │  │
 │  │  │ infra.diagnostics.hardware    │ Hardware diagnostic events              │  │  │
@@ -606,7 +606,7 @@ yaml
 │                                       │                                            │
 │                                       ▼                                            │
 │  ┌───────────────────────────────────────────────────────────────────────────────┐  │
-│  │                    ESB (Kafka + Redis Streams)                                │  │
+│  │                    ESB (NATS JetStream + Redis Streams)                                │  │
 │  │                    infra.* topics                                             │  │
 │  └───────────────────────────────────────────────────────────────────────────────┘  │
 │                                       │                                            │
@@ -823,7 +823,7 @@ For loosely coupled reactive scenarios, use event-driven choreography:
 │                                       │                                            │
 │                                       ▼                                            │
 │  ┌───────────────────────────────────────────────────────────────────────────────┐  │
-│  │                    ESB (Kafka + Redis Streams)                                │  │
+│  │                    ESB (NATS JetStream + Redis Streams)                                │  │
 │  │                    knowledge.* topics                                         │  │
 │  └───────────────────────────────────────────────────────────────────────────────┘  │
 │                                       │                                            │
@@ -1293,7 +1293,7 @@ Following SOA security best practices, implement defense in depth:
 |----------------------|-----------------------------|-------------------------------------------|------------------------------|
 | **API Gateway**      | Kong                        | Unified entry point, cross-cutting concerns | Service Consumer Interface  |
 | **Service Registry** | Consul                      | Service discovery, health monitoring      | Service Registry            |
-| **ESB**              | Kafka + Redis Streams       | Event routing, async communication        | Message Broker              |
+| **ESB**              | NATS JetStream + Redis Streams       | Event routing, async communication        | Message Broker              |
 | **Orchestration**    | Temporal / LangGraph        | Workflow coordination                     | Service Composition         |
 | **API Framework**    | FastAPI                     | Service implementation                    | Service Provider            |
 | **LLM**              | SambaNova (via gateway)     | AI capabilities                           | Shared Service              |
@@ -1320,7 +1320,7 @@ Following **SOA adoption best practices**, implement incrementally:
 |-----------------------------------|--------------------------------------------------|-----------------|--------------------------------------|
 | Deploy Service Registry           | Set up Consul cluster                            | Platform Team   | Running Consul cluster              |
 | Implement API Gateway             | Configure Kong with auth                         | Platform Team   | Gateway accepting requests          |
-| Deploy ESB                        | Kafka cluster, topic design                      | Platform Team   | Event infrastructure                |
+| Deploy ESB                        | NATS JetStream cluster, topic design                      | Platform Team   | Event infrastructure                |
 | Create Governance Portal          | Service catalog, contract repository             | Platform Team   | Governance tooling                  |
 | Define Service Contracts          | OpenAPI/Proto for all services                   | All Teams       | Contract specifications             |
 
@@ -1388,7 +1388,7 @@ Following **SOA adoption best practices**, implement incrementally:
 | Metric                     | Target                                      | Measurement          |
 |----------------------------|---------------------------------------------|----------------------|
 | **API Response Time (P99)**| <500ms (simple), <2s (complex)             | Prometheus          |
-| **Event Processing Latency**| <100ms                                     | Kafka metrics       |
+| **Event Processing Latency**| <100ms                                     | NATS JetStream metrics       |
 | **System Uptime**          | 99.9%                                      | Monitoring stack    |
 | **Concurrent Users**       | 500+                                       | Load testing        |
 
